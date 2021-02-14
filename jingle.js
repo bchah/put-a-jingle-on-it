@@ -39,15 +39,15 @@ function displayJingles() {
         $(`#j_${jingle.id}`).on("click", (event) => {
             event.preventDefault();
             var $this = $(this);
-            if ($this.attr("data-sound-id") == 0) {
+            if ($this.attr("data-sound-id") == "0") {
                 $this.attr("data-sound-id") = sound.play();
                 nowPlaying = $this.attr("data-sound-id");
             } else {
-                if (nowPlaying != 0) {
+                if (nowPlaying != "0") {
                     stop[nowPlaying];
-                    nowPlaying = 0;
+                    nowPlaying = "0";
                     if ($this.attr("data-sound-id") == nowPlaying) {
-                        $this.attr("data-sound-id") = 0;
+                        $this.attr("data-sound-id") = "0";
                     } else {
                         $this.attr("data-sound-id") = sound.play();
                         nowPlaying = $this.attr("data-sound-id");
