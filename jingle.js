@@ -33,26 +33,19 @@ function displayJingles() {
             `<div class='col-md-4'>
             <h2>${jingle.name}</h2>
             <p>${jingle.notes}</p>
-            <p><a class='btn btn-secondary' href='#' data-sound-id='0' id='j_${jingle.id}' role='button'>Play</a></p>
+            <p><a class='btn btn-secondary playBtn' href='#' data-sound-id='' id='j_${jingle.id}' role='button'>Play</a></p>
         </div>`);
 
         $(`#j_${jingle.id}`).on("click", (event) => {
             event.preventDefault();
             var $this = $(this);
-            if ($this.attr("data-sound-id") == "0") {
+
+            var soundID = $this.attr("data-sound-id") || null;
+
+            if (playing(soundID)) { stop(); $(".playBtn").text("Play"); } else if (playing()) {
+                stop(); $(".playBtn").text("Play");
                 $this.attr("data-sound-id") = sound.play();
-                nowPlaying = $this.attr("data-sound-id");
-            } else {
-                if (nowPlaying != "0") {
-                    stop[nowPlaying];
-                    nowPlaying = "0";
-                    if ($this.attr("data-sound-id") == nowPlaying) {
-                        $this.attr("data-sound-id") = "0";
-                    } else {
-                        $this.attr("data-sound-id") = sound.play();
-                        nowPlaying = $this.attr("data-sound-id");
-                    }
-                }
+                $this.text("Stop");
             }
 
         })
