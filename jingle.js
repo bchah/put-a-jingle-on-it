@@ -21,24 +21,40 @@ var jingles = [
 
 function displayJingles() {
 
+    var nowPlaying = 0;
+
     jingles.forEach((jingle) => {
 
         var sound = new Howl({
             src: [jingle.src]
-          });
-          
-          
+        });
 
         $("#jingles").append(
-        `<div class='col-md-4'>
+            `<div class='col-md-4'>
             <h2>${jingle.name}</h2>
             <p>${jingle.notes}</p>
-            <p><a class='btn btn-secondary' href='#' id='j_${jingle.id}' role='button'>Play</a></p>
+            <p><a class='btn btn-secondary' href='#' data-sound-id='0' id='j_${jingle.id}' role='button'>Play</a></p>
         </div>`);
 
-        $(`#j_${jingle.id}`).on("click", (event)=>{
+        $(`#j_${jingle.id}`).on("click", (event) => {
             event.preventDefault();
-            sound.play();
+            var $this = $(this);
+            if ($this.attr("data-sound-id") == 0) {
+                $this.attr("data-sound-id") = sound.play();
+                nowPlaying = $this.attr("data-sound-id");
+            } else {
+                if (nowPlaying != 0) {
+                    stop[nowPlaying];
+                    nowPlaying = 0;
+                    if ($this.attr("data-sound-id") == nowPlaying) {
+                        $this.attr("data-sound-id") = 0;
+                    } else {
+                        $this.attr("data-sound-id") = sound.play();
+                        nowPlaying = $this.attr("data-sound-id");
+                    }
+                }
+            }
+
         })
 
     });
