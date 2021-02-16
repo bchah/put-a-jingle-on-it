@@ -56,36 +56,27 @@ var jingles = [
 
 ];
 
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
 function displayJingles() {
 
     jingles.forEach((jingle) => {
 
-        // var sound = new Howl({
-        //     src: [jingle.src]
-        // });
-
         $("#jingles").append(
-            `<div class='col-md-4'>
+            `<div class='col-md-4 jingle'>
             <h2>${jingle.name}</h2>
             <p>${jingle.notes}&nbsp;<a href=${jingle.src} download>Download</a></p>
             <p><audio controls preload='none'><source src=${jingle.src} type="audio/mpeg"></audio></p>
-           
         </div>`);
 
-        // $(`#j_${jingle.id}`).on("click", (event) => {
-        //     event.preventDefault();
-        //     var $this = $(this);
-
-        //     var soundID = $(`#j_${jingle.id}`).attr("data-sound-id");
-
-        //     if (nowPlaying && nowPlaying == soundID) { sound.stop([soundID]); $(".playBtn").text("Play"); nowPlaying = null; } else {
-        //         sound.stop([nowPlaying]); $(".playBtn").text("Play");
-        //         $(`#j_${jingle.id}`).attr("data-sound-id", sound.play());
-        //         nowPlaying = $(`#j_${jingle.id}`).attr("data-sound-id");
-        //         $(`#j_${jingle.id}`).text("Stop");
-        //     }
-
-        // })
-
     });
+
+    $("moo").css("color", getRandomColor());
 }
