@@ -52,7 +52,8 @@ var jingles = [
         name: "Sunrise",
         notes: "Let the gentle piano and string melody carry you all the way to a crisp and joyful 'ting'.",
         src: "./jingles/9.mp3"
-    },
+    }
+
 
 ];
 
@@ -60,14 +61,63 @@ function getRandomColor() {
     var letters = '0123456789ABCDEF';
     var color = '#';
     for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
+        color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
-  }
+}
 
-function displayJingles() {
+var paginateBy = 9;
+var index = 0;
+var page = 1;
+var pages = 1;
 
-    jingles.forEach((jingle) => {
+function fireUpYourPotatoCannonDoctorJones() {
+
+    if (jingles.length > paginateBy) {
+
+        pages = Math.ceil(jingles.length / paginateBy);
+        displayJingles(0, paginateBy);
+        $("#pageMsg").text(`page ${page} of ${pages}`);
+
+        $("#nextPage").on("click", () => {
+
+            if (page == pages) { return false } else {
+                $("#jingles").hide().html("");
+                page++;
+                index += paginateBy;
+
+
+                $("#prevPage").show();
+                $("#pageMsg").text(`page ${page} of ${pages}`);
+                displayJingles(index, paginateBy);
+
+            }
+
+        });
+
+        $("#prevPage").on("click", () => {
+            if (page == 1) { return false } else {
+                $("#jingles").hide().html("");
+
+                index -= paginateBy;
+                page--;
+                // if (index < paginateBy) {
+                //     $("#prevPage").hide();
+                // }
+                $("#nextPage").show();
+                $("#pageMsg").text(`Page ${page} of ${pages}`);
+                displayJingles(index, paginateBy);
+            }
+
+        });
+
+    } else { $("#jinglePageController").hide(); displayJingles(0,paginateBy); }
+
+}
+
+function displayJingles(index, num) {
+    var jinglesToShow = jingles.slice(index, index + num);
+    jinglesToShow.forEach((jingle) => {
 
         $("#jingles").append(
             `<div class='col-md-4 jingle'>
@@ -78,5 +128,5 @@ function displayJingles() {
 
     });
 
-    $("moo").css("color", getRandomColor());
+    $("#jingles").fadeIn();
 }

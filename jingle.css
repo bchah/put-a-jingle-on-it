@@ -1,7 +1,7 @@
 /* Move down content because we have a fixed navbar that is 3.5rem tall */
 body {
   color: white;
-  padding-top: 3.5rem;
+  padding-top: 2rem;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   background-color: rgba(82, 67, 162, 0.736);
 }
@@ -9,6 +9,10 @@ body {
 #moo {
   width:2em;
   vertical-align: -50%;
+}
+
+#pageMsg {
+  vertical-align: -10%;
 }
 
 .jumbotron {
