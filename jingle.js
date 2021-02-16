@@ -71,7 +71,7 @@ function displayJingles() {
 
         $("#jingles").append(
             `<div class='col-md-4 jingle'>
-            <h2>${jingle.name}</h2>
+            <h3>${jingle.name}</h3>
             <p>${jingle.notes}&nbsp;<a href=${jingle.src} download>Download</a></p>
             <p><audio controls preload='none'><source src=${jingle.src} type="audio/mpeg"></audio></p>
         </div>`);
