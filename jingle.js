@@ -94,9 +94,9 @@ function fireUpYourPotatoCannonDoctorJones() {
 
         pages = Math.ceil(jingles.length / paginateBy);
         displayJingles(0, paginateBy);
-        $("#pageMsg").text(`page ${page} of ${pages}`);
+        $(".pageMsg").text(`page ${page} of ${pages}`);
 
-        $("#nextPage").on("click", () => {
+        $(".nextPage").on("click", () => {
 
             if (page == pages) {
                 $("#moo").removeClass("no").addClass("no");
@@ -108,15 +108,15 @@ function fireUpYourPotatoCannonDoctorJones() {
                 index += paginateBy;
 
 
-                $("#prevPage").show();
-                $("#pageMsg").text(`page ${page} of ${pages}`);
+                $(".prevPage").show();
+                $(".pageMsg").html(`page ${page} of ${pages}`);
                 displayJingles(index, paginateBy);
 
             }
 
         });
 
-        $("#prevPage").on("click", () => {
+        $(".prevPage").on("click", () => {
             if (page == 1) {
                 $("#moo").removeClass("no").addClass("no");
                 setTimeout(()=>{$($("#moo").removeClass("no"))},500);
@@ -129,14 +129,14 @@ function fireUpYourPotatoCannonDoctorJones() {
                 // if (index < paginateBy) {
                 //     $("#prevPage").hide();
                 // }
-                $("#nextPage").show();
-                $("#pageMsg").text(`Page ${page} of ${pages}`);
+                $(".nextPage").show();
+                $(".pageMsg").html(`Page ${page} of ${pages}`);
                 displayJingles(index, paginateBy);
             }
 
         });
 
-    } else { $("#jinglePageController").hide(); displayJingles(0, paginateBy); }
+    } else { $(".jinglePageController").hide(); displayJingles(0, paginateBy); }
 
 }
 
