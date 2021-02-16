@@ -98,7 +98,11 @@ function fireUpYourPotatoCannonDoctorJones() {
 
         $("#nextPage").on("click", () => {
 
-            if (page == pages) { return false } else {
+            if (page == pages) {
+                $("#moo").removeClass("no").addClass("no");
+                setTimeout(()=>{$($("#moo").removeClass("no"))},500);
+                return false;
+            } else {
                 $("#jingles").hide().html("");
                 page++;
                 index += paginateBy;
@@ -113,7 +117,11 @@ function fireUpYourPotatoCannonDoctorJones() {
         });
 
         $("#prevPage").on("click", () => {
-            if (page == 1) { return false } else {
+            if (page == 1) {
+                $("#moo").removeClass("no").addClass("no");
+                setTimeout(()=>{$($("#moo").removeClass("no"))},500);
+                return false;
+            } else {
                 $("#jingles").hide().html("");
 
                 index -= paginateBy;
@@ -128,7 +136,7 @@ function fireUpYourPotatoCannonDoctorJones() {
 
         });
 
-    } else { $("#jinglePageController").hide(); displayJingles(0,paginateBy); }
+    } else { $("#jinglePageController").hide(); displayJingles(0, paginateBy); }
 
 }
 
