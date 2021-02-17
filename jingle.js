@@ -1,11 +1,11 @@
 var jingles = [
     {
         id: 1,
-        name: "Sentimental Boys",
-        notes: "Thinking of the good times behind us, looking forward to even better times ahead.",
+        name: "Future Runner",
+        notes: "One dark morning in November 2019, Los Angeles... A police officer orders a bowl of noodles.",
         src: "./jingles/1.mp3",
-        artist: "Karl",
-        created: "2021-02-12"
+        artist: "Brian",
+        created: "2021-02-11"
     },
     {
         id: 2,
@@ -73,12 +73,13 @@ var jingles = [
     },
     {
         id: 10,
-        name: "Future Runner",
-        notes: "One dark morning in November 2019, Los Angeles...",
+        name: "Sentimental Boys",
+        notes: "Thinking of the good times behind us, looking forward to even better times ahead.",
         src: "./jingles/10.mp3",
-        artist: "Brian",
-        created: "2021-02-11"
-    },
+        artist: "Karl",
+        created: "2021-02-12"
+    }
+    ,
     {
         id: 11,
         name: "Dark Jungle",
@@ -143,7 +144,7 @@ var jingles = [
     {
         id: 18,
         name: "Distant Success",
-        notes: "You're well on the way to an A+ career, but don't forget the gaping chasm which stands between you and success.",
+        notes: "You're well on the way to an A+ career, but you can never forget the gaping chasm which stands between you and success.",
         src: "./jingles/18.mp3",
         artist: "Karl",
         created: "2021-02-16",
@@ -160,12 +161,13 @@ var jingles = [
     },
     {
         id: 20,
-        name: "Today is",
-        notes: "Let the day wash over you, the good parts in the bad. In the end it's all about the various times you had.",
+        name: "Irish Fields",
+        notes: "A little Irish jig to inspire the feeling of wind blowing through fields of four-leaf clovers. A must-dance.",
         src: "./jingles/20.mp3",
         artist: "Karl",
         created: "2021-02-16"
-    },
+    }
+    ,
     {
         id: 21,
         name: "Being Ethical",
@@ -194,9 +196,9 @@ var jingles = [
     },
     {
         id: 24,
-        name: "Irish Fields",
-        notes: "Grab your 4-leaf clover, pour yourself a green beer and get ready for a good old jig - it's Irish music!",
-        src: "./jingles/14.mp3",
+        name: "Today is",
+        notes: "Let the day wash over you, the good parts and the bad. In the end it's all about the various times you had.",
+        src: "./jingles/24.mp3",
         artist: "Karl",
         created: "2021-02-16"
     }
@@ -219,6 +221,10 @@ var page = 1;
 var pages = 1;
 
 function fireUpYourPotatoCannonDoctorJones() {
+
+    jingles.sort(function(a, b) {
+        return b.id - a.id;
+    });
 
     if (jingles.length > paginateBy) {
 
@@ -272,12 +278,13 @@ function fireUpYourPotatoCannonDoctorJones() {
 
 function displayJingles(index, num) {
     var jinglesToShow = jingles.slice(index, index + num);
+
     jinglesToShow.forEach((jingle) => {
 
         $("#jingles").append(
             `<div class='col-md-4 jingle'>
             <h3>${jingle.name}</h3>
-            <small style="vertical-align:80%">by <b>${jingle.artist}</b></small>
+            <small style="vertical-align:80%">by <b>${jingle.artist}</b> on ${jingle.created}</small>
             <p>${jingle.notes}&nbsp;<a href=${jingle.src} download>Download</a></p>
             <p><audio controls preload='none'><source src=${jingle.src} type="audio/mpeg"></audio></p>
             
