@@ -222,6 +222,8 @@ var pages = 1;
 
 function fireUpYourPotatoCannonDoctorJones() {
 
+    $("#jingleCount").text(String(jingles.length));
+
     jingles.sort(function(a, b) {
         return b.id - a.id;
     });
