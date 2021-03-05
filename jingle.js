@@ -171,7 +171,7 @@ var jingles = [
     {
         id: 21,
         name: "Being Ethical",
-        notes: "Sometimes you need to go off the rails and be an upside-down maverick. This cacophonous track would commplement any mal-intended deed!",
+        notes: "Sometimes you need to go off the rails and be an upside-down maverick. This cacophonous track would complement any mal-intended deed!",
         src: "./jingles/21.mp3",
         artist: "Karl",
         created: "2021-02-16",
@@ -264,9 +264,6 @@ function fireUpYourPotatoCannonDoctorJones() {
 
                 index -= paginateBy;
                 page--;
-                // if (index < paginateBy) {
-                //     $("#prevPage").hide();
-                // }
                 $(".nextPage").show();
                 $(".pageMsg").html(`Page ${page} of ${pages}`);
                 displayJingles(index, paginateBy);
@@ -285,7 +282,7 @@ function displayJingles(index, num) {
 
         $("#jingles").append(
             `<div class='col-md-4 jingle'>
-            <h3>${jingle.name}</h3>
+            <h4>${jingle.name}</h4>
             <small style="vertical-align:80%">by <b>${jingle.artist}</b> on ${jingle.created}</small>
             <p>${jingle.notes}&nbsp;<a href=${jingle.src} download>Download</a></p>
             <p><audio controls preload='none'><source src=${jingle.src} type="audio/mpeg"></audio></p>
